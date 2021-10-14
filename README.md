@@ -31,12 +31,12 @@
 
 ## technical
 
-前端
+前端：开发组件
 - [x] react 17.x
 - [x] umi 3.x
 - [x] umi-request 1.4.0
 
-后端
+后端：负责渲染
 - [x] express 4.x
 - [x] umi-request 1.4.0
 
