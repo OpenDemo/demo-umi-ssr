@@ -1,4 +1,4 @@
-# umi SSR 的后端实现
+# react + umi + express 实现 ssr
 
 背景：公司的产品挂到了一个电商平台上，领导让我们给产品详情页做SEO，让用户在百度就能搜索到我们的产品，
 但是商品详情是动态加载的，而且电商平台是第三方，他们肯定不会给我们做SEO，要实现SEO必须将商品页静态化，
@@ -35,7 +35,13 @@
 
 运行 `yarn start`
 
+- 首页：工业云的静态页面
+
 访问 http://localhost:3000
+
+- 产品页
+
+访问 http://localhost:3000/product?ProductUuid=39049636-7997-4e77-89e8-8e9af57298ae
 
 ## 核心逻辑
 
@@ -79,8 +85,22 @@ if (html instanceof Stream) {
 }
 ```
 
-# 检查SSR是否生效
+## 如何开发
+
+### 前端
+
+前端在 client 目录下进行开发，基本和正常的 react 组件一致
+
+参考：client/src/pages/product/index_csr.tsx
+
+前端也可以单独运行：yarn start
+
+### 后端
+
+后端基于 express 实现
+
+参考：routes/product/index.js
+
+## 检查SSR是否生效
 
 浏览器访问页面，然后右键 - 显示网页源代码，如果 `<div id="root">...</div>` 中有内容，说明成功
-
-
