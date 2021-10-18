@@ -20,6 +20,14 @@ export default function ProductPage(props: any) {
   return (
     <div>
       <h1>{BaseInfo.ProductName}</h1>
+      <div>
+        <img src={BaseInfo.Logo} alt={BaseInfo.ProductName}/>
+      </div>
+      <p>{BaseInfo.Summary}</p>
+      <p>产品描述</p>
+      <div>
+        <div dangerouslySetInnerHTML={{__html: BaseInfo.Detail}}/>
+      </div>
     </div>
   );
 }

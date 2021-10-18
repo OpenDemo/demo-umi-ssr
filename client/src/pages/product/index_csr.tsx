@@ -1,4 +1,4 @@
-import {IGetInitialProps} from 'umi';
+import {Helmet, IGetInitialProps} from 'umi';
 import request from '@/services/request';
 
 class IndexProps {
@@ -18,10 +18,28 @@ export default function IndexPage(props: any) {
     IsvInfo: {},
   };
   const {BaseInfo, Category, IsvInfo} = info;
-  return (
-    <div>
-      <h1>{BaseInfo.ProductName}</h1>
-    </div>
+  return (<>
+      <Helmet>
+        <title>{BaseInfo.ProductName}</title>
+        <meta charSet="utf-8"/>
+        <meta name={"keywords"} content={BaseInfo.TagSet.join(',')}/>
+        <meta name={"description"} content={BaseInfo.Summary.substr(0, 150)}/>
+        <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+              name="viewport"/>
+      </Helmet>
+      <div>
+        <h1>{BaseInfo.ProductName}</h1>
+        <div>
+          <img src={BaseInfo.Logo} alt={BaseInfo.ProductName}/>
+        </div>
+        <p>{BaseInfo.Summary}</p>
+        <p>产品描述</p>
+        <div>
+          {/* dangerouslySetInnerHTML标签外层必须再套一层 */}
+          <div dangerouslySetInnerHTML={{__html: BaseInfo.Detail}}/>
+        </div>
+      </div>
+    </>
   );
 }
 
